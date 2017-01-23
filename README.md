@@ -20,7 +20,7 @@ SPI Example: <a href="https://github.com/PlayingWithFusion/PWFusion_AS3935_SPI">
 
 <strong> Product page links: </strong>
 
-SEN-39002: <a href="http://www.playingwithfusion.com/productview.php?pdid=xx"> Lightning Emulator Shield</a>
+SEN-39002: <a href="http://www.playingwithfusion.com/productview.php?pdid=55"> Lightning Emulator Shield</a>
 
 SEN-39001: <a href="http://www.playingwithfusion.com/productview.php?pdid=22"> AS3935 Lightning Sensor Board</a>
 
