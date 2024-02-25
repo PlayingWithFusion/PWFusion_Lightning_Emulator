@@ -8,9 +8,11 @@
 * and develop your application.
 *
 *   SEN-39002 (universal applications)
-*   ---> http://www.playingwithfusion.com/productview.php?pdid=XXXXXXXXX
+*   ---> https://www.playingwithfusion.com/productview.php?pdid=55
 *   SEN-39001 (universal applications)
 *   ---> http://playingwithfusion.com/productview.php?pdid=22
+*   SEN-39003 (qwiic lightning sensor)
+*   ---> https://www.playingwithfusion.com/productview.php?pdid=135
 *
 * Copyright © 2017 Playing With Fusion, Inc.
 * SOFTWARE LICENSE AGREEMENT: This code is released under the MIT License.
@@ -36,6 +38,7 @@
 * REVISION HISTORY:
 * Author        Date        Comments
 * J. Steinlage  2017Jan17   Original release
+* J. Steinlage  2024Feb25   Update to support additional I2C addresses
 * 
 * Playing With Fusion, Inc. invests time and resources developing open-source
 * code. Please support Playing With Fusion and continued open-source 
@@ -64,8 +67,10 @@
 #include "PWFusion_MCP4725_12DAC.h"
 
 // declare sensor object
-#define DAC_ADD 0x62
+#define DAC_ADD 0x62  // uses A1 version
+#define DAC_ADD_ALT 0x64 // uses A2 version
 PWFusion_MCP4725 dac0(DAC_ADD);
+PWFusion_MCP4725 dac1(DAC_ADD_ALT);
 
 void setup()
 {
@@ -74,10 +79,12 @@ void setup()
   
   // set up DAC
   dac0.begin();
+  dac1.begin();
 
   // setup DAC, set DAC to 'off' and pulled low
   // DAC output / write to NV memory / power down DAC, pull to gnd
   dac0.setOutput(0,false,true);
+  dac1.setOutput(0,false,true);
   
   // give the Arduino time to start up
   delay(100); 
@@ -142,6 +149,7 @@ void loop()
     for(i = 0; i < 19; i++)
       {
         dac0.setOutput(out_array[i], false, false);         // set new command value
+        dac1.setOutput(out_array[i], false, false);         // set new command value
         delayMicroseconds(30);    // change drive every 30 microseconds
       }
   }
@@ -149,6 +157,7 @@ void loop()
   
   // turn off DAC
   dac0.setOutput(0, true, true);
+  dac1.setOutput(0, true, true);
   // hold state for one sec - give sensor time to pick up, report signal
   delay(1000);
   // turn off all LEDs
