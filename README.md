@@ -2,7 +2,7 @@
 Arduino Code for SEN-39002, Lightning Emulator for AS3935 Lightning Sensor by Playing With Fusion!
 
 ![SEN-39002 ISO](http://playingwithfusion.com/include/getimg.php?imgid=1267)
-![SEN-39003 ISO](https://www.playingwithfusion.com/imgviewer.php?pdid=135&imgid=1577)
+![SEN-39003 ISO](https://www.playingwithfusion.com/include/getimg.php?imgid=1577)
 ![SEN-39001 ISO](http://www.playingwithfusion.com/include/getimg.php?imgid=1105)
 
 Example configured for Arduino Uno R3 or clone.
